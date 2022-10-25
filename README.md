@@ -1,3 +1,4 @@
 # CS225_Final_Proj
 
-description will be written here
+WE need to update this description as we start deciding the project.
+
