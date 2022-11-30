@@ -47,7 +47,6 @@ for album in albums:
 
 def get_playlist_tracks(sp, playlist_id):
     f = open(r"demofile2.csv", "w")
-    # Ref - https://stackoverflow.com/questions/39086287/spotipy-how-to-read-more-than-100-tracks-from-a-playlist?noredirect=1&lq=1
     results = sp.playlist_tracks(playlist_id)
     it = results['items']
     uris = []
