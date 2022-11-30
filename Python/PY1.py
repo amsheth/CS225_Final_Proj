@@ -1,4 +1,5 @@
-  import spotipy as sp
+import spotipy as sp
+import csv
 import os
 import sys
 os.environ['SPOTIPY_CLIENT_ID']='67602c876c8d43aeab822b5550633e48'
@@ -45,7 +46,8 @@ for album in albums:
     print(album['track']['name'])'''
 
 def get_playlist_tracks(sp, playlist_id):
-    f = open(r"demofile2.txt", "w")
+    f = open(r"demofile2.csv", "w")
+    # Ref - https://stackoverflow.com/questions/39086287/spotipy-how-to-read-more-than-100-tracks-from-a-playlist?noredirect=1&lq=1
     results = sp.playlist_tracks(playlist_id)
     it = results['items']
     uris = []
@@ -60,13 +62,47 @@ def get_playlist_tracks(sp, playlist_id):
         f.write(album['track']['album']['artists'][0]['name'])
         #f.write(',')
         #a=album['track']["popularity"]
-        a=str(a)
-        f.write(a)
+        #a=str(a)
+        #f.write(a)
         f.write('\n')
         #f.write('\n')
     f.close()
-    f = open("demofile2.txt", "r")
+    f = open("demofile2.csv", "r")
     print(f.read())
+#open and read the file after the appending:
 
 spotify = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
-get_playlist_tracks(spotify, '5QZ75WasgTm3nsxC0EdFyl')
+#get_playlist_tracks(spotify, '5QZ75WasgTm3nsxC0EdFyl')
+def search(sp):
+    #f=open(r"out","w")
+    q=input("Enter your search items")
+    alb=sp.search(q,type="album")
+    art=sp.search(q,type="artist")
+    play=sp.search(q,type="playlist")
+    tra=sp.search(q,type="track")
+    r1=alb["albums"]['items']
+    r2=art["artists"]['items']
+    r3=play["playlists"]['items']
+    r4=tra["tracks"]['items']
+    '''while alb["albums"]['next']:
+        #alb = sp.next(alb)
+        r1.extend(alb["albums"]['items'])
+    while art["artist"]['next']:
+        #art = sp.next(art)
+        r2.extend(art["artist"]['items'])
+    while play['next']:
+        play = sp.next(play)
+        r3.extend(play[1]['items'])
+    while tra["tracks"]['next']:
+        #tra = sp.next(r1)
+        r4.extend(tra["tracks"]['items'])'''
+
+    for i in r4:
+        print (i["album"]['artists'][0]['name'],end=" ,")
+        print(i["album"]['name'])
+
+
+            
+search(spotify)   
+    
+    
