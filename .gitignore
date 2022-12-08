@@ -1,5 +1,7 @@
 /.vscode/
 /.idea/
 /build/
+/venv/
+/.venv/
 
 *.DS_Store
