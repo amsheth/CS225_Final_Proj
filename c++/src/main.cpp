@@ -6,12 +6,18 @@ int main() {
 
     //Graph myGraph("rosterList.txt", "studentList.txt");
 
-    //V2D roster = file_to_V2D("../rosterList.txt");
-//    V2D roster = file_to_V2D("../PY/demofile3.txt");
-//    //print(roster);
-//    Graph abc(roster);
-//    abc.displayMatrix();
-
-    std::cout << "hello world" << std::endl;
+    
+    V2D roster = file_to_V2D("../PY/demofile1.txt");
+    //print(roster);
+    Graph abc(roster);
+    abc.makeartist(roster);
+    abc.displayMatrix();
+    bool res;
+    res = abc.hasCycle();
+    if(res)
+        std::cout << "The graph has cycle." << std::endl;
+    else
+        std::cout << "The graph has no cycle." << std::endl;
+    
 
 }

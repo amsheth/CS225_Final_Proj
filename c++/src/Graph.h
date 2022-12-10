@@ -35,12 +35,17 @@ class Graph{
         vector<string> songs;
     public:
         Graph(const V2D & playlist);
+        //~Graph();
         void addEdge(int x, int y);
         void addWeight(int x, int y, int z);
         void nodes(const V2D & playlist);
         void make(const V2D & playlist);
+        void makeartist(const V2D & playlist);
         int edgeWeightAlgo(Song song1, Song song2);
         void displayMatrix();
+        bool hasCycle();
+        bool dfs(int vertex, set<int>&visited, int parent);
+        void printCycles(int& cyclenumber);
 };
 V2D file_to_V2D(const std::string & filename);
 void print(const V2D & playlist);

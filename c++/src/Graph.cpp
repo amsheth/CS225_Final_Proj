@@ -13,6 +13,7 @@
 #include "utils.h"
 #include <algorithm>
 #include <string>
+#include <set>
 
 
 using namespace std;
@@ -20,31 +21,37 @@ using namespace std;
 Graph::Graph(const V2D & playlist){
     numVertices=playlist.size();
     //vector<vector<int>> adjMat= new vector<vector<int>>;
-    adjMat.resize(numVertices);
-    for (unsigned i = 0; i < playlist.size(); i++){
-        adjMat.push_back(std::vector<int>(playlist.size(), 0));
+    adjMat.resize(numVertices-1);
+    for (unsigned i = 0; i < playlist.size()-1; i++){
+        adjMat[i].resize(numVertices-1);
+        for (int j=0;j<numVertices-1;j++){
+            adjMat[i][j]=0;
+        }
+        //adjMat.push_back(std::vector<int>(playlist.size(), 0));
     }
     //nodes(playlist);
 }
+
 void Graph::addWeight(int x, int y, int z){
     adjMat[x][y] = z;
     adjMat[y][x] = z;
 }
 void Graph::addEdge(int x, int y){
-    adjMat[x][y] = 1;
-    adjMat[y][x] = 1;
+    adjMat[x][y]++;
+    adjMat[y][x]++;
 }
 void Graph::nodes(const V2D & playlist){
     for (int i=0;i<playlist.size();i++){
-        std::cout << playlist[i][0] << std::endl;
+        //std::cout << playlist[i][0] << std::endl;
         songs.push_back(playlist[i][0]);
+        //std::cout << songs[songs.size()-1] + " - TEST " << std::endl;
     }
 }
 void Graph::displayMatrix() {
    size_t i, j;
    for(i = 0; i < adjMat.size(); i++) {
       for(j = 0; j < adjMat[i].size(); j++) {
-         std::cout << adjMat[i][j] << "   ";
+         std::cout << adjMat[i][j] << ",";
       }
       std::cout << std::endl;
    }
@@ -86,23 +93,84 @@ void print(const V2D & playlist){
     }
 }
 
-void Graph::make(const V2D & playlist){
+void Graph::make(const V2D &playlist){
     nodes(playlist);
     for (unsigned i = 0; i < songs.size(); i++){
         for(unsigned j = i; j < songs.size(); j++){
-            if (playlist[j][0] == playlist[i][0]){
+            if (i!=j){
                 continue;
             }
-            for (unsigned k = 1; k < playlist[i].size(); k++){
-                for(unsigned l = 1; l < playlist[i].size(); l++){
-                    if (playlist[i][k] == playlist[j][l]){
-                        adjMat[i][j] = 1;
-                        adjMat[j][i] = 1;
+            for (unsigned k = 1; k < playlist[i].size()-1; k++){
+                for(unsigned t = 1; t < playlist[j].size()-1; t++){
+                    //std::cout<<playlist[j][t]<<';';
+                    //std::cout << playlist[i][k] + " - Second " << std::endl;
+                    if (playlist[i][k] == playlist[j][t]){
+                        addEdge(i,k);
                     }
                 }
             }
         }
-    }
+    }   
+
+}
+void Graph::makeartist(const V2D &playlist){
+    nodes(playlist);
+    for (unsigned i = 0; i < songs.size(); i++){
+        for(unsigned j = i; j < songs.size(); j++){
+            if (i!=j){
+                continue;
+            }
+            for (unsigned k = 1; k < 1; k++){
+                for(unsigned t = 1; t < 1; t++){
+                    //std::cout<<playlist[j][t]<<';';
+                    //std::cout << playlist[i][k] + " - Second " << std::endl;
+                    if (playlist[i][k] == playlist[j][t]){
+                        addEdge(i,k);
+                    }
+                }
+            }
+        }
+    }   
 
 }
 
+bool Graph::dfs(int vertex, set<int>&visited, int parent) {
+   visited.insert(vertex);
+   for(int v = 0; v<numVertices; v++) {
+      if(adjMat[vertex][v]) {
+         if(v == parent)    
+         if(visited.find(v) != visited.end())
+            std::cout<<songs[v]<<std::endl;
+            return true;
+         if(dfs(v++, visited, vertex))
+            std::cout<<songs[v]<<std::endl;
+            return true;
+      }
+   }
+   return false;
+}
+bool Graph::hasCycle() {
+   set<int> visited; 
+   for(int v = 0; v<numVertices; v++) {
+      std::cout<<songs[v]<<std::endl;
+      if(visited.find(v) != visited.end())
+        continue;
+      if(dfs(v, visited, -1)) {        
+        return true;
+      }
+   }
+   return false;
+}
+
+void Graph::printCycles(int& cyclenumber)
+{
+ 
+    // print all the vertex with same cycle
+    for (int i = 0; i < cyclenumber; i++) {
+        // Print the i-th cycle
+        cout << "Cycle Number " << i + 1 << ": ";
+        for (int x : adjMat[i])
+            cout << x << " ";
+        cout << endl;
+    }
+}
