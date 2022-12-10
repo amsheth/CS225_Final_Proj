@@ -1,6 +1,0 @@
-mp_schedule-build/
-build/
-test
-.obj
-*.o
-*.d
