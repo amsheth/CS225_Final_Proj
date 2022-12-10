@@ -35,10 +35,19 @@ Graph::Graph(const V2D & playlist){
     //nodes(playlist);
 }
 
-void Graph::addWeight(int x, int y, int z){
-    adjMat[x][y] = z;
-    adjMat[y][x] = z;
+// void Graph::addWeight(int x, int y, int z){
+//     adjMat[x][y] = z;
+//     adjMat[y][x] = z;
+// }
+
+
+void Graph::addWeight(const V2D & playlist,int x, int y){
+    int weight = edgeWeightAlgo(playlist, x, y);
+    adjMat[x][y] = weight;
+    adjMat[y][x] = weight;
 }
+
+
 void Graph::addEdge(int x, int y){
     adjMat[x][y]++;
     adjMat[y][x]++;
@@ -100,13 +109,19 @@ void print(const V2D & playlist){
 }
 
 int Graph::edgeWeightAlgo(const V2D &playlist, int input1, int input2){
-    for (int i=1; i<playlist.size()-1;i++){
-        for (int j=0; j<playlist[i].size()-1;j++){
-            AG[i][j]=playlist[i][j];
+    for (int i=0; i<playlist.size()-1;i++){
+        for (int j=1; j<playlist[i].size()-1;j++){
+            AG[i][j-1]=playlist[i][j];
             //artist and genre
         }
     }
-    vector<string> first, second;
+    // vector called first = ["song", "artist", "genre"]
+
+    // [["song", "artist1", "genre"]
+    //  ["song", "artist", "genre"]
+    //  ["song", "artist", "genre"]
+    // ]
+    /*vector<string> first, second;
     for(int i = 0; i<AG.size(); i++){
         
         for(int j = 0; j<AG[i].size(); j++){
@@ -118,19 +133,31 @@ int Graph::edgeWeightAlgo(const V2D &playlist, int input1, int input2){
             }
         }
     }
-    if(!second.empty() || !first.empty()){
-        return 100;
+    int weight = 100;
+    //if one of the songs don't exist, return no weight
+    if(second.empty() || first.empty()){
+        return weight;
     }
+    //if artists are same, 70% similarity can be assumed
     else if(second[0] == first[0]){
+        weight -= 70;
+    }
+
+    int idx = min(first.size(), second.size());
+    //add 10% similarity for each shared artist
+    for(int i=1; i<idx; i++){
+        for (int j = 1; j<idx;j++){
+            if(first[i] == second[j]){
+                weight -=10;
+            }       
+        } 
+    }
+
+    if(weight<=0){
         return 5;
     }
-
-    int idx = max(first.size(), second.size());
-
-    for(int i=0; i<idx; i++){
-        
-    }
-
+    return weight;*/
+    
     
 
 
@@ -140,6 +167,7 @@ int Graph::edgeWeightAlgo(const V2D &playlist, int input1, int input2){
 
     return 0;
 }
+
 
 void Graph::make(const V2D &playlist){
 
@@ -152,8 +180,8 @@ void Graph::make(const V2D &playlist){
             for (unsigned k = 1; k < playlist[i].size()-1; k++){
                 for(unsigned t = 1; t < playlist[j].size()-1; t++){
                     if (playlist[i][k] == playlist[j][t]){
-                        int w=((stoi(popularity[i])+stoi(popularity[j]))/2)+1;
-                        addWeight(i,k,w);
+                        //int w=((stoi(popularity[i])+stoi(popularity[j]))/2)+1;
+                        addWeight(playlist, i, k);
                     }
                 }
             }
@@ -161,7 +189,7 @@ void Graph::make(const V2D &playlist){
     }   
 
 }
-/*void Graph::makeartist(const V2D &playlist){
+void Graph::makeartist(const V2D &playlist){
     nodes(playlist);
     for (unsigned i = 0; i < songs.size(); i++){
         for(unsigned j = i; j < songs.size(); j++){
@@ -182,7 +210,7 @@ void Graph::make(const V2D &playlist){
 
 }
 
-bool Graph::DFS(int vertex, unsigned int rowsize, vector<bool> &visited)
+/*bool Graph::DFS(int vertex, unsigned int rowsize, vector<bool> &visited)
     {
         if(visited[vertex])  {
             cout << " Cycle exists. " << endl;
@@ -268,8 +296,8 @@ int Graph::miniDist(int distance[], bool Tset[]) // finding minimum distance
 }
 void Graph::DijkstraAlgo(int src) // adjacency matrix 
 {
-    int distance[numVertices-1]; // // array to calculate the minimum distance for each node                             
-    bool Tset[numVertices-1];// boolean array to mark visited and unvisited for each node
+    int distance[numVertices]; // // array to calculate the minimum distance for each node                             
+    bool Tset[numVertices];// boolean array to mark visited and unvisited for each node
     
      
     for(int k = 0; k<numVertices; k++)

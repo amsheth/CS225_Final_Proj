@@ -7,7 +7,7 @@ int main() {
     //Graph myGraph("rosterList.txt", "studentList.txt");
 
     
-    V2D roster = file_to_V2D("../PY/demofile1.txt");
+    V2D roster = file_to_V2D("../Python/demofile1.txt");
     //print(roster);
     Graph abc(roster);
     abc.make(roster);

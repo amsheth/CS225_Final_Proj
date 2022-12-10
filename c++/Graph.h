@@ -30,7 +30,7 @@ class Graph{
         Graph(const V2D & playlist);
         //~Graph();
         void addEdge(int x, int y);
-        void addWeight(int x, int y, int z);
+        void addWeight(const V2D &playlist, int x, int y);
         void nodes(const V2D & playlist);
         void make(const V2D & playlist);
         void makeartist(const V2D & playlist);
