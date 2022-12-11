@@ -47,8 +47,7 @@ class Graph{
         void printCycles(int& cyclenumber);
         int miniDist(int dist[], bool sptSet[]);
         void DijkstraAlgo(int src);
-        void printSolution(int startVertex, vector<int> distances,
-                   vector<int> parents);
+        void printSolution(int startVertex, vector<int> distances, vector<int> parents);
 };
 
 

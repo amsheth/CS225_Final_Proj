@@ -166,64 +166,6 @@ int Graph::edgeWeightAlgo(const V2D &playlist, int input1, int input2){
 }
 
 
-int Graph::edgeWeightAlgo(const V2D &playlist, int input1, int input2){
-    for (size_t i=0; i<playlist.size()-1;i++){
-        for (size_t j=1; j<playlist[i].size()-1;j++){
-            AG[i][j-1]=playlist[i][j];
-            //artist and genre
-        }
-    }
-    // vector called first = ["song", "artist", "genre"]
-
-    // [["song", "artist1", "genre"]
-    //  ["song", "artist", "genre"]
-    //  ["song", "artist", "genre"]
-    // ]
-    /*vector<string> first, second;
-    for(int i = 0; i<AG.size(); i++){
-        
-        for(int j = 0; j<AG[i].size(); j++){
-            if(i == input1){
-                first.push_back(AG[i][j]);
-            }
-            if(i == input2){
-                second.push_back(AG[i][j]);
-            }
-        }
-    }
-    int weight = 100;
-    //if one of the songs don't exist, return no weight
-    if(second.empty() || first.empty()){
-        return weight;
-    }
-    //if artists are same, 70% similarity can be assumed
-    else if(second[0] == first[0]){
-        weight -= 70;
-    }
-    int idx = min(first.size(), second.size());
-    //add 10% similarity for each shared artist
-    for(int i=1; i<idx; i++){
-        for (int j = 1; j<idx;j++){
-            if(first[i] == second[j]){
-                weight -=10;
-            }       
-        } 
-    }
-    if(weight<=0){
-        return 5;
-    }
-    return weight;*/
-    
-    
-
-
-    
-
-
-
-    return 0;
-}
-
 int Graph::bfsUnweightedPath(unsigned int start, unsigned int end)    {
 
     // some tinkering was done here before i committed so it may segfault or return wrong values; i've mostly been focusing on
@@ -374,21 +316,7 @@ void Graph::makeartist(const V2D &playlist){
     }   
 }
 
-bool Graph::dfs(int vertex, set<int>&visited, int parent) {
-   visited.insert(vertex);
-   for(int v = 0; v<numVertices; v++) {
-      if(adjMat[vertex][v]) {
-         if(v == parent)    
-         if(visited.find(v) != visited.end())
-            std::cout<<songs[v]<<std::endl;
-            return true;
-         if(dfs(v++, visited, vertex))
-            std::cout<<songs[v]<<std::endl;
-            return true;
-      }
-   }
-   return false;
-}
+
 bool Graph::hasCycle() {
    set<int> visited; 
    for(int v = 0; v<numVertices; v++) {
