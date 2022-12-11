@@ -53,7 +53,7 @@ void Graph::addEdge(int x, int y){
     adjMat[y][x]++;
 }
 void Graph::nodes(const V2D & playlist){
-    for (int i=0;i<playlist.size();i++){
+    for (size_t i=0;i<playlist.size();i++){
         //std::cout << playlist[i][0] << std::endl;
         songs.push_back(playlist[i][0]);
         int x=playlist[i].size() -1;
@@ -109,8 +109,8 @@ void print(const V2D & playlist){
 }
 
 int Graph::edgeWeightAlgo(const V2D &playlist, int input1, int input2){
-    for (int i=0; i<playlist.size()-1;i++){
-        for (int j=1; j<playlist[i].size()-1;j++){
+    for (size_t i=0; i<playlist.size()-1;i++){
+        for (size_t j=1; j<playlist[i].size()-1;j++){
             AG[i][j-1]=playlist[i][j];
             //artist and genre
         }
@@ -242,7 +242,7 @@ void Graph::dfs(int start, vector<bool>& visited)
 {
     cout << songs[start] << " ";
     visited[start] = true;
-    for (int i = 0; i < adjMat[start].size(); i++) {
+    for (size_t i = 0; i < adjMat[start].size(); i++) {
         if (adjMat[start][i] == 1 && (!visited[i])) {
             dfs(i, visited);
         }
@@ -296,8 +296,8 @@ int Graph::miniDist(int distance[], bool Tset[]) // finding minimum distance
 }
 void Graph::DijkstraAlgo(int src) // adjacency matrix 
 {
-    int distance[numVertices]; // // array to calculate the minimum distance for each node                             
-    bool Tset[numVertices];// boolean array to mark visited and unvisited for each node
+    int*  distance = new int[numVertices]; // // array to calculate the minimum distance for each node
+    bool *Tset = new bool[numVertices];// boolean array to mark visited and unvisited for each node
     
      
     for(int k = 0; k<numVertices; k++)

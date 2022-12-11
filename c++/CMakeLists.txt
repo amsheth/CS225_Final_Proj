@@ -12,4 +12,4 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Werror -Wfatal-errors -
 # Use debug config same as in class
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG -O0 -gdwarf-4")
 
-add_executable(main src/main.cpp src/Graph.cpp src/try.cpp src/utils.cpp)
+add_executable(main src/main.cpp src/Graph.cpp src/utils.cpp)
