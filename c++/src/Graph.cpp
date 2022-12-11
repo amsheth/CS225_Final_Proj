@@ -1,4 +1,4 @@
-#include "graph.h"
+#include "Graph.h"
 #include <sstream>
 #include <vector>
 #include <fenv.h>

@@ -47,6 +47,7 @@ class Graph{
         void printSolution(int startVertex, vector<int> distances,
                    vector<int> parents);
 };
+
 V2D file_to_V2D(const std::string & filename);
 void print(const V2D & playlist);
 
