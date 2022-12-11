@@ -318,15 +318,15 @@ void Graph::makeartist(const V2D &playlist){
 
 
 bool Graph::hasCycle() {
-   set<int> visited; 
-   for(int v = 0; v<numVertices; v++) {
-      std::cout<<songs[v]<<std::endl;
-      if(visited.find(v) != visited.end())
-        continue;
-      if(dfs(v, visited, -1)) {        
-        return true;
-      }
-   }
+   //set<int> visited; 
+   //for(int v = 0; v<numVertices; v++) {
+   //   std::cout<<songs[v]<<std::endl;
+   //   if(visited.find(v) != visited.end())
+   //     continue;
+   //   if(dfs(v, visited, -1)) {        
+   //     return true;
+   //   }
+   //}
    return false;
 }
  
@@ -341,5 +341,55 @@ void Graph::printCycles(int& cyclenumber)
         for (int x : adjMat[i])
             cout << x << " ";
         cout << endl;
+    }
+}
+
+int Graph::miniDist(int distance[], bool Tset[]) // finding minimum distance
+{
+    int minimum=INT_MAX,ind;
+              
+    for(int k=0;k<numVertices;k++) 
+    {
+        if(Tset[k]==false && distance[k]<=minimum)      
+        {
+            minimum=distance[k];
+            ind=k;
+        }
+    }
+    return ind;     // returns index of song with lowest distance
+}
+
+void Graph::DijkstraAlgo(int src) // adjacency matrix 
+{
+    int*  distance = new int[numVertices]; // // array to calculate the minimum distance for each node
+    bool *Tset = new bool[numVertices];// boolean array to mark visited and unvisited for each node
+    
+     
+    for(int k = 0; k<numVertices; k++)
+    {
+        distance[k] = INT_MAX;
+        Tset[k] = false;    
+    }
+    
+    distance[src] = 0;   // Source vertex distance is set 0               
+    
+    for(int k = 0; k<numVertices; k++)                           
+    {
+        int m=miniDist(distance,Tset); 
+        Tset[m]=true;
+        for(int k = 0; k<numVertices; k++)                  
+        {
+            // updating the distance of neighbouring vertex
+            if(!Tset[k] && adjMat[m][k] && distance[m]!=INT_MAX && distance[m]+adjMat[m][k]<distance[k])
+                distance[k]=distance[m]+adjMat[m][k];
+        }
+    }
+    int width =75;
+    cout<<"Vertex\t\t\t\t\t\t\t\t\tDistance from source vertex"<<endl;
+    for(int k = 0; k<numVertices; k++)                      
+    { 
+        //char str=65+k; 
+        cout<<left<<setw(width)<<songs[k]<<
+        setw(width)<<distance[k]<<endl;
     }
 }
