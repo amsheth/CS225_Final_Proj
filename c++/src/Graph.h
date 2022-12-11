@@ -26,6 +26,9 @@ class Graph{
         vector<string> popularity;
         V2D AG;
         int NO_PARENT = -1;
+        vector<string> popularity;
+        V2D AG;
+        int NO_PARENT = -1;
     public:
         Graph(const V2D & playlist);
         //~Graph();
@@ -34,6 +37,7 @@ class Graph{
         void nodes(const V2D & playlist);
         void make(const V2D & playlist);
         void makeartist(const V2D & playlist);
+        int edgeWeightAlgo(const V2D &playlist, int input1, int input2);
         int edgeWeightAlgo(const V2D &playlist, int input1, int input2);
         void displayMatrix();
         void hasCycle();
@@ -46,6 +50,7 @@ class Graph{
         void printSolution(int startVertex, vector<int> distances,
                    vector<int> parents);
 };
+
 
 V2D file_to_V2D(const std::string & filename);
 void print(const V2D & playlist);
