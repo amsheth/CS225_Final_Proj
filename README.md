@@ -9,10 +9,12 @@ Setup: `mkdir c++/build && cd c++/build && cmake .. && make`
 
 Run: `./main`
 
+Test: `./test`
+
 Or, manually:
 1. Make subdirectory of `c++/` for build output (eg. `c++/build`).
 2. In that directory, run `cmake ..`
-3. Compile using `make` and execute using `./main` 
+3. Compile using `make`, execute using `./main`, and test using `./test`
 
 # Python Instructions
 Requires Python 3 and pip.

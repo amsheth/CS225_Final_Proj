@@ -26,9 +26,6 @@ class Graph{
         vector<string> popularity;
         V2D AG;
         int NO_PARENT = -1;
-        vector<string> popularity;
-        V2D AG;
-        int NO_PARENT = -1;
     public:
         Graph(const V2D & playlist);
         //~Graph();
@@ -38,9 +35,8 @@ class Graph{
         void make(const V2D & playlist);
         void makeartist(const V2D & playlist);
         int edgeWeightAlgo(const V2D &playlist, int input1, int input2);
-        int edgeWeightAlgo(const V2D &playlist, int input1, int input2);
         void displayMatrix();
-        void hasCycle();
+        bool hasCycle();
         int bfsUnweightedPath(unsigned int start, unsigned int end);
         int BetweennessCentrality(int song);
         bool isCyclicUtil(int v, bool visited[], int parent);
