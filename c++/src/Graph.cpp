@@ -191,7 +191,7 @@ int Graph::bfsUnweightedPath(unsigned int start, unsigned int end)    {
         BFS.push(start);
 
         while(!BFS.empty()) {               // while the queue is not empty, continue checking every nearest non-visited node
-                                            // basically the bfs from the mp but intended to find a specific node
+                                            // basically the bfs from the mps but intended to find a specific node
             int frontVertex = BFS.front();
             BFS.pop();
             retval++;   
