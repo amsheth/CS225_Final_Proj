@@ -15,5 +15,6 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG -O0 -gdwarf
 add_executable(main src/main.cpp src/Graph.cpp src/utils.cpp)
 
 find_package(Catch2 3 REQUIRED)
-add_executable(test test/test-main.cpp)
+add_executable(test test/test-main.cpp src/Graph.cpp src/utils.cpp)
 target_link_libraries(test PRIVATE Catch2::Catch2WithMain)
+add_dependencies(test main)
