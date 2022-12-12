@@ -20,7 +20,7 @@
 
 using namespace std;
 
-Graph::Graph(const V2D & playlist){
+Graph::Graph(const V2D & playlist){     // constructor
     numVertices=playlist.size();
     numVertices=numVertices-1;
     //vector<vector<int>> adjMat= new vector<vector<int>>;
@@ -71,6 +71,7 @@ void Graph::displayMatrix() {
    }
 }
 V2D file_to_V2D(const std::string & filename){
+    // mp_schedules implementation is used here
     V2D xyz;    
     std::string str;
     std::string x;
@@ -217,7 +218,7 @@ int Graph::BetweennessCentrality(int song)  {
                                         retval += 1;        // if song m is a part of the shortest path, and if song m is the 
                                                             // inputted song, increment the return value
                                         }
-                                    distance[k] = distance[m] + adjMat[m][k];      // updates distance of the current path
+                                    distance[k] = distance[m] + adjMat[m][k];      // updates weighted distance of the current shortest path
                             }
                         }
                     }
@@ -243,7 +244,6 @@ void Graph::make(const V2D &playlist){
             }
         }
     }   
-
 }
 void Graph::makeartist(const V2D &playlist){
     nodes(playlist);

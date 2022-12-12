@@ -28,6 +28,6 @@ int main() {
     //int val = abc.bfsUnweightedPath(i, j);
     //std::cout << val << " - The BFS Unweighted Path between points " <<i<<" & "<<j<< std::endl;
     int val = abc.BetweennessCentrality(2);
-    std::cout << val << " - Centrality determined by B.C. algorithm" << std::endl;
+    std::cout << val << " - Centrality of inputted song, determined by B.C. algorithm" << std::endl;
 }
 
