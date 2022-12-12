@@ -3,7 +3,7 @@
 #include "../src/Graph.h"
 
 TEST_CASE("Basic Test Cases"){
-    std::vector<std::vector<std::string>> playlist = file_to_V2D("test/demofile1.txt");
+    std::vector<std::vector<std::string>> playlist = file_to_V2D("../test/test-demofile-1.txt");
 
     Graph g = Graph(playlist);
 
