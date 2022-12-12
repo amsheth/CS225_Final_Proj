@@ -7,12 +7,12 @@ Presumes running with cmake and make installed and ready to go; then, similarly 
 
 Setup: `mkdir c++/build && cd c++/build && cmake .. && make`
 
-Run: `./main`
+Run: `./main <filename>`. Provide the filename of a file produced by the Python section of the project (eg. `demofile*.txt`). 
 
 Or, manually:
 1. Make subdirectory of `c++/` for build output (eg. `c++/build`).
 2. In that directory, run `cmake ..`
-3. Compile using `make` and execute using `./main` 
+3. Compile using `make` and execute using `./main <filename>` 
 
 # Python Instructions
 Requires Python 3 and pip.
