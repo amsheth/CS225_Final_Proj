@@ -26,21 +26,15 @@ class Graph{
         vector<string> popularity;
         V2D AG;
         int NO_PARENT = -1;
-        vector<string> popularity;
-        V2D AG;
-        int NO_PARENT = -1;
     public:
         Graph(const V2D & playlist);
         //~Graph();
         void addEdge(int x, int y);
-        void addWeight(const V2D &playlist, int x, int y);
+        void addWeight(int x, int y, int z);
         void nodes(const V2D & playlist);
         void make(const V2D & playlist);
         void makeartist(const V2D & playlist);
-        int edgeWeightAlgo(const V2D &playlist, int input1, int input2);
-        int edgeWeightAlgo(const V2D &playlist, int input1, int input2);
         void displayMatrix();
-        void hasCycle();
         int bfsUnweightedPath(unsigned int start, unsigned int end);
         int BetweennessCentrality(int song);
         int miniDist(int dist[], bool sptSet[]);

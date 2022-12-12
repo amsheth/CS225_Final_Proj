@@ -16,6 +16,8 @@ int main() {
     abc.make(roster);
     abc.displayMatrix();
     std::cout<<std::endl;
+    abc.displayMatrix();
+    std::cout<<std::endl;
     //abc.hasCycle();
     int x=3;
     std::cout << "Printing The Dijkstra's for node: " <<x<< std::endl;
