@@ -30,7 +30,7 @@ class Graph{
         Graph(const V2D & playlist);
         //~Graph();
         void addEdge(int x, int y);
-        void addWeight(const V2D &playlist, int x, int y);
+        void addWeight(int x, int y, int z);
         void nodes(const V2D & playlist);
         void make(const V2D & playlist);
         void makeartist(const V2D & playlist);
@@ -39,8 +39,6 @@ class Graph{
         bool hasCycle();
         int bfsUnweightedPath(unsigned int start, unsigned int end);
         int BetweennessCentrality(int song);
-        bool isCyclicUtil(int v, bool visited[], int parent);
-        void printCycles(int& cyclenumber);
         int miniDist(int dist[], bool sptSet[]);
         void DijkstraAlgo(int src);
         void printSolution(int startVertex, vector<int> distances, vector<int> parents);
