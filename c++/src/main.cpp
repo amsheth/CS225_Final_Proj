@@ -3,19 +3,29 @@
 #include <iostream>
 
 int main() {
-    //std::cout << "Hello, mp_schedule!" << std::endl;
+    std::cout << "Printing The Demofile:" << std::endl;
 
     //Graph myGraph("rosterList.txt", "studentList.txt");
 
     
-    V2D roster = file_to_V2D("../Python/demofile1.txt");
-    //print(roster);
+    V2D roster = file_to_V2D("../../Python/demofile1.txt");
+    print(roster);
+    std::cout << "Printing The Adjacency Matrix:" << std::endl;
+    std::cout<<std::endl;
     Graph abc(roster);
     abc.make(roster);
-    //abc.displayMatrix();
+    abc.displayMatrix();
+    std::cout<<std::endl;
     //abc.hasCycle();
-    abc.DijkstraAlgo(3);
-
-
+    int x=3;
+    std::cout << "Printing The Dijkstra's for node: " <<x<< std::endl;
+    std::cout<<std::endl;
+    abc.DijkstraAlgo(x);
+    std::cout<<std::endl;
+    int i=5; int j=4;
+    //int val = abc.bfsUnweightedPath(i, j);
+    //std::cout << val << " - The BFS Unweighted Path between points " <<i<<" & "<<j<< std::endl;
+    int val = abc.BetweennessCentrality(2);
+    std::cout << val << " - Centrality determined by B.C. algorithm" << std::endl;
 }
 

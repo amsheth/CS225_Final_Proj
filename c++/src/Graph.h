@@ -43,8 +43,6 @@ class Graph{
         void hasCycle();
         int bfsUnweightedPath(unsigned int start, unsigned int end);
         int BetweennessCentrality(int song);
-        bool isCyclicUtil(int v, bool visited[], int parent);
-        void printCycles(int& cyclenumber);
         int miniDist(int dist[], bool sptSet[]);
         void DijkstraAlgo(int src);
         void printSolution(int startVertex, vector<int> distances, vector<int> parents);
