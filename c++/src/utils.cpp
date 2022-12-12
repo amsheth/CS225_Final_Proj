@@ -11,7 +11,10 @@ std::string file_to_string(const std::string& filename){
   if (text.is_open()) {
     strStream << text.rdbuf();
   }
-  return strStream.str();
+  std::string str = strStream.str();
+  std::cout<<"String: "<<std::endl;
+  std::cout <<str << std::endl;
+  return str;
 }
 
 std::string TrimRight(const std::string & str) {

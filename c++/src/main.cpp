@@ -1,6 +1,7 @@
 #include "Graph.h"
 #include "utils.h"
 #include <iostream>
+#include <filesystem>
 
 int main(int argc, char *argv[]) {
     // handle filename argument
@@ -11,12 +12,13 @@ int main(int argc, char *argv[]) {
         std::cerr << "Provide only the filename as argument" << std::endl;
         return -1;
     }
+    std::cout<<filesystem::current_path()<<std::endl;
     char *filename = argv[1];
 
     std::cout << "Printing The Demofile:" << std::endl;
     //Graph myGraph("rosterList.txt", "studentList.txt");
 
-    V2D roster = file_to_V2D(filename);
+    V2D roster = file_to_V2D("../../Python/demofile1.txt");
     print(roster);
     std::cout << "Printing The Adjacency Matrix:" << std::endl;
     std::cout << std::endl;
