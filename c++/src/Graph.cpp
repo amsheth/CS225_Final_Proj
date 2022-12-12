@@ -32,7 +32,7 @@ Graph::Graph(const V2D & playlist){     // constructor
         }
         //adjMat.push_back(std::vector<int>(playlist.size(), 0));
     }
-    //nodes(playlist);
+    nodes(playlist);
 }
 
 // void Graph::addWeight(int x, int y, int z){
@@ -52,7 +52,7 @@ void Graph::addEdge(int x, int y){
     adjMat[y][x]++;
 }
 void Graph::nodes(const V2D & playlist){
-    for (int i=0;i<(int)playlist.size();i++){
+    for (int i=0;i<(int)playlist.size()-1;i++){
         //std::cout << playlist[i][0] << std::endl;
         songs.push_back(playlist[i][0]);
         int x=playlist[i].size() -1;
@@ -228,7 +228,7 @@ int Graph::BetweennessCentrality(int song)  {
 
 void Graph::make(const V2D &playlist){
 
-    nodes(playlist);
+    // nodes(playlist);
     for (unsigned i = 0; i < songs.size(); i++){
         for(unsigned j = i; j < songs.size(); j++){
             if (songs[i]==songs[j]){
@@ -246,7 +246,7 @@ void Graph::make(const V2D &playlist){
     }   
 }
 void Graph::makeartist(const V2D &playlist){
-    nodes(playlist);
+    // nodes(playlist);
     for (unsigned i = 0; i < songs.size(); i++){
         for(unsigned j = i; j < songs.size(); j++){
             if (i!=j){
