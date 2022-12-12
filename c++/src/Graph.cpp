@@ -315,3 +315,19 @@ void Graph::DijkstraAlgo(int src) // adjacency matrix
         setw(width)<<distance[k]<<endl;
     }
 }
+
+int Graph::getNumVertices() const {
+    return numVertices;
+}
+
+const vector<vector<int>> &Graph::getAdjMat() const {
+    return adjMat;
+}
+
+const vector<string> &Graph::getSongs() const {
+    return songs;
+}
+
+const vector<string> &Graph::getPopularity() const {
+    return popularity;
+}

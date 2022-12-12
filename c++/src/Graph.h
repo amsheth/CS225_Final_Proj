@@ -1,3 +1,5 @@
+#pragma once
+
 #include "utils.h"
 #include <sstream>
 #include <vector>
@@ -42,6 +44,14 @@ class Graph{
         int miniDist(int dist[], bool sptSet[]);
         void DijkstraAlgo(int src);
         void printSolution(int startVertex, vector<int> distances, vector<int> parents);
+
+    int getNumVertices() const;
+
+    const vector<vector<int>> &getAdjMat() const;
+
+    const vector<string> &getSongs() const;
+
+    const vector<string> &getPopularity() const;
 };
 
 

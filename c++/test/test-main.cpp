@@ -2,11 +2,10 @@
 
 #include "../src/Graph.h"
 
-TEST_CASE("Test Case 1"){
-    V2D playlist = file_to_V2D("../Python/demofile1.txt");
+TEST_CASE("Basic Test Cases"){
+    std::vector<std::vector<std::string>> playlist = file_to_V2D("test/demofile1.txt");
 
     Graph g = Graph(playlist);
 
-    int x = 0;
-    REQUIRE(x==1);
+    REQUIRE(g.getAdjMat().size()==4);
 }
