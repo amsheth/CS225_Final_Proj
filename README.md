@@ -17,10 +17,10 @@ Or, manually:
 3. Compile using `make`, execute using `./main <filename>`, and test using `./test`
 
 # Python Instructions
-Requires Python 3 and pip.
+Requires Python 3 and pip. A couple example files have been provided if you  prefer not to use this step.
 
 1. `pip install -r requirements.txt`
-2. Run `Python/interactive_data_getter.py` using Python. Supply a filename of your choice and a Spotify playlist ID, or use the defaults.
+2. Run `Python/interactive_data_getter.py` using Python. Supply a filename of your choice and a Spotify playlist ID, or use the defaults (but that's boring).
 
 # Specific Testing Instructions
 Assumes test executable exists:
