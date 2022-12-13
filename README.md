@@ -28,7 +28,7 @@ Requires Python 3 and pip. A couple example files have been provided if you pref
 
 0. `apt-get update && apt-get install -y pip` to install Python and pip if needed.
 1. `cd Python && pip install -r requirements.txt`
-2. Remain in the Python folder and `interactive_data_getter.py` using Python. Supply a filename of your choice and a Spotify playlist ID, or use the defaults (but that's boring).
+2. Remain in the Python folder and run `python interactive_data_getter.py` or `python3 interactive_data_getter.py` depending on your install. Supply a filename of your choice and a Spotify playlist ID, or use the defaults (but that's boring).
 
 # Specific Testing Instructions
 Assumes test executable exists:
