@@ -43,9 +43,9 @@ Graph::Graph(const V2D & playlist){     // constructor
     nodes(playlist);
 }
 
-void Graph::addWeight(int x, int y,int z){
-    adjMat[x][y] = z;
-    adjMat[y][x] = z;
+void Graph::addWeight(int x, int y,int value){
+    adjMat[x][y] = value;
+    adjMat[y][x] = value;
 }
 
 
@@ -305,6 +305,3 @@ const vector<string> &Graph::getSongs() const {
     return songs;
 }
 
-const vector<string> &Graph::getPopularity() const {
-    return popularity;
-}

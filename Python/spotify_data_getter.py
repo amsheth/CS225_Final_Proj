@@ -1,20 +1,31 @@
-import spotipy as sp
-import csv
 import os
-import sys
-os.environ['SPOTIPY_CLIENT_ID']='67602c876c8d43aeab822b5550633e48'
-os.environ['SPOTIPY_CLIENT_SECRET']='cf0c077fb1fc4a768b2d79fd9d1cfecf'
-os.environ['SPOTIPY_REDIRECT_URI']='http://localhost:8888/callback'
+
+import spotipy as sp
+
+os.environ['SPOTIPY_CLIENT_ID'] = '67602c876c8d43aeab822b5550633e48'
+os.environ['SPOTIPY_CLIENT_SECRET'] = 'cf0c077fb1fc4a768b2d79fd9d1cfecf'
+os.environ['SPOTIPY_REDIRECT_URI'] = 'http://localhost:8888/callback'
 from spotipy.oauth2 import SpotifyClientCredentials
 
+<<<<<<< HEAD
 def genre(x,sp):
     r=[]
     results=sp.artist(x)
+=======
+# update output filename here
+filename = r"demofile2.txt"
+
+def genre(x, sp):
+    r = []
+    results = sp.artist(x)
+>>>>>>> 8d745acfdd6b5510e2c15258b99280a02a772202
     for i in results['genres']:
         r.append(i)
     return r
+
+
 def get_playlist_tracks(sp, playlist_id):
-    f = open(r"demofile2.txt", "w")
+    f = open(filename, "w")
     # Ref - https://stackoverflow.com/questions/39086287/spotipy-how-to-read-more-than-100-tracks-from-a-playlist?noredirect=1&lq=1
     results = sp.playlist_tracks(playlist_id)
     it = results['items']
@@ -29,22 +40,29 @@ def get_playlist_tracks(sp, playlist_id):
         for i in range(len(album['track']['album']['artists'])):
             f.write(album['track']['album']['artists'][i]['name'])
             f.write(';')
-        sad=genre(album['track']['album']['artists'][0]['id'],sp)
+        sad = genre(album['track']['album']['artists'][0]['id'], sp)
         for i in sad:
             f.write(i)
             f.write(';')
-        a=album['track']["popularity"]
-        a=str(a)
+        a = album['track']["popularity"]
+        a = str(a)
         f.write(a)
         f.write('\n')
-        #f.write('\n')
+        # f.write('\n')
     f.close()
-    f = open("demofile2.txt", "r")
+    f = open(filename, "r")
     print(f.read())
-#open and read the file after the appending:
+
+
+# open and read the file after the appending:
 
 spotify = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
+<<<<<<< HEAD
 #spotify:playlist:37i9dQZEVXbMDoHDwVN2tF
 get_playlist_tracks(spotify, '5QZ75WasgTm3nsxC0EdFyl')  
     
     
+=======
+# spotify:playlist:37i9dQZEVXbMDoHDwVN2tF
+get_playlist_tracks(spotify, '5QZ75WasgTm3nsxC0EdFyl')
+>>>>>>> 8d745acfdd6b5510e2c15258b99280a02a772202
