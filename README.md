@@ -20,7 +20,7 @@ Or, manually:
 Requires Python 3 and pip.
 
 1. `pip install -r requirements.txt`
-2. Run `Python/spotify_data_getter.py` using Python
+2. Run `Python/interactive_data_getter.py` using Python. Supply a filename of your choice and a Spotify playlist ID, or use the defaults.
 
 # Specific Testing Instructions
 Assumes test executable exists:
