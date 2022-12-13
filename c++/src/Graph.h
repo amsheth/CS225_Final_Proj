@@ -75,11 +75,11 @@ public:
 
     int BetweennessCentrality(int song);
 
-    int miniDist(int dist[], bool sptSet[]);
+    int miniDist(vector<int> distance, vector<bool>Tset);
 
     bool DijkstraAlgo(int src);
 
-    void printDJK(int *distance);
+    void printDJK(vector<int> distance);
 
     /**
      * returns the number of vertices in the graph
