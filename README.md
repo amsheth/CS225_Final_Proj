@@ -21,3 +21,15 @@ Requires Python 3 and pip.
 
 1. `pip install -r requirements.txt`
 2. Run `Python/spotify_data_getter.py` using Python
+
+# Specific Testing Instructions
+Assumes test executable exists:
+
+Testing BFS: `./test "BFS"`.
+Input to BFS test is a starting index and a destination index, inputted in that order. Returns, if available, the shortest unweighted path between start and end.
+
+Testing Dijkstra's: `./test "Dijkstra's"`.
+Input to Dijkstra's test is a starting index. The output will show, if available, the shortest path available to all other vertices (songs).
+
+Testing Betweenness Centrality: `./test "Betweenness Centrality"`.
+Input to Betweenness Centrality is the index of the song of interest. Returns the "centrality" of the inputted song index. The test case displays centrality for all songs.
