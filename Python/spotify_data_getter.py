@@ -53,33 +53,3 @@ def get_playlist_tracks(sp, playlist_id):
 spotify = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
 # spotify:playlist:37i9dQZEVXbMDoHDwVN2tF
 get_playlist_tracks(spotify, '5QZ75WasgTm3nsxC0EdFyl')
-
-
-def search(sp):
-    # f=open(r"out","w")
-    q = input("Enter your search items")
-    alb = sp.search(q, type="album")
-    art = sp.search(q, type="artist")
-    play = sp.search(q, type="playlist")
-    tra = sp.search(q, type="track")
-    r1 = alb["albums"]['items']
-    r2 = art["artists"]['items']
-    r3 = play["playlists"]['items']
-    r4 = tra["tracks"]['items']
-    '''while alb["albums"]['next']:
-        #alb = sp.next(alb)
-        r1.extend(alb["albums"]['items'])
-    while art["artist"]['next']:
-        #art = sp.next(art)
-        r2.extend(art["artist"]['items'])
-    while play['next']:
-        play = sp.next(play)
-        r3.extend(play[1]['items'])
-    while tra["tracks"]['next']:
-        #tra = sp.next(r1)
-        r4.extend(tra["tracks"]['items'])'''
-
-    for i in r4:
-        print(i["album"]['artists'][0]['name'], end=" ,")
-        print(i["album"]['name'])
-# search(spotify)
