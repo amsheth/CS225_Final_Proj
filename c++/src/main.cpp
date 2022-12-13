@@ -5,20 +5,16 @@
 
 int main(int argc, char *argv[]) {
     // handle filename argument
-    /*if (argc < 2) {
+    if (argc < 2) {
         std::cerr << "Please provide filename" << std::endl;
         return -1;
     } else if (argc > 2) {
         std::cerr << "Provide only the filename as argument" << std::endl;
         return -1;
     }
-    std::cout<<filesystem::current_path()<<std::endl;
     char *filename = argv[1];
-    "../test/test-demofile-1.txt"
-    std::cout << "Printing The Demofile:" << std::endl;
-    //Graph myGraph("rosterList.txt", "studentList.txt");*/
 
-    V2D roster = file_to_V2D("../../Python/demofile1.txt");
+    V2D roster = file_to_V2D(filename);
     print(roster);
     std::cout << "Printing The Adjacency Matrix:" << std::endl;
     std::cout << std::endl;

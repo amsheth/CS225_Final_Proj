@@ -1,26 +1,29 @@
 # CS 225 Final Project
 
 _See `Project Proposal.md` for project proposal details._
+_See `Writeup.md` for post-project reflection writeup._
 
 # C++ Instructions
 Presumes running with cmake and make installed and ready to go; then, similarly to our in-class usage:
 
 Setup: `mkdir c++/build && cd c++/build && cmake .. && make`
 
-Run: `./main <filename>`. Provide the filename of a file produced by the Python section of the project (eg. `demofile*.txt`). 
+Run: `./main <filename>`. Provide the filename of a file produced by the Python section of the project (eg. `../../Python/demofile1.txt`). 
 
 Test: `./test`
 
 Or, manually:
 1. Make subdirectory of `c++/` for build output (eg. `c++/build`).
 2. In that directory, run `cmake ..`
-3. Compile using `make`, execute using `./main <filename>`, and test using `./test`
+3. Compile using `make`, execute using `./main <filename>` (path relative to `build`), and test using `./test`
+Note that if the file is supplied incorrectly, a blank output may be returned.
 
 # Python Instructions
-Requires Python 3 and pip. A couple example files have been provided if you  prefer not to use this step.
+Requires Python 3 and pip. A couple example files have been provided if you prefer not to use this step.
 
-1. `pip install -r requirements.txt`
-2. Run `Python/interactive_data_getter.py` using Python. Supply a filename of your choice and a Spotify playlist ID, or use the defaults (but that's boring).
+0. `apt-get update && apt-get install -y pip` to install Python and pip if needed.
+1. `cd Python && pip install -r requirements.txt`
+2. Remain in the Python folder and `interactive_data_getter.py` using Python. Supply a filename of your choice and a Spotify playlist ID, or use the defaults (but that's boring).
 
 # Specific Testing Instructions
 Assumes test executable exists:
