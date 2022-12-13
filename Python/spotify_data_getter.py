@@ -7,18 +7,13 @@ os.environ['SPOTIPY_CLIENT_SECRET'] = 'cf0c077fb1fc4a768b2d79fd9d1cfecf'
 os.environ['SPOTIPY_REDIRECT_URI'] = 'http://localhost:8888/callback'
 from spotipy.oauth2 import SpotifyClientCredentials
 
-<<<<<<< HEAD
-def genre(x,sp):
-    r=[]
-    results=sp.artist(x)
-=======
+
 # update output filename here
 filename = r"demofile2.txt"
 
 def genre(x, sp):
     r = []
     results = sp.artist(x)
->>>>>>> 8d745acfdd6b5510e2c15258b99280a02a772202
     for i in results['genres']:
         r.append(i)
     return r
