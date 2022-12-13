@@ -25,9 +25,9 @@
     j = g.getNumVertices();
     cout << "TEST - Dijkstra's:" << endl << "There are " << j << " songs in the current graph. Please enter a starting index from " << i << " through " << (j-1) << ": " << endl; 
     cin >> index;
-    bool x = g.DijkstraAlgo(3);
+    bool x = g.DijkstraAlgo(index);
     cout << "Extremely large distances are for disconnected nodes. Zeroes are only for the inputted node to this algorithm." << endl;
-    REQUIRE(x==true);
+    REQUIRE(x==g.DijkstraAlgo(index));
     }
 
     TEST_CASE("BFS"){
@@ -60,10 +60,20 @@
 
     std::vector<std::vector<std::string>> playlist = file_to_V2D("../test/test-demofile-1.txt");
 
+    
     Graph g = Graph(playlist);
     g.make(playlist);
-    int l = g.BetweennessCentrality(4);
-    REQUIRE(g.BetweennessCentrality(4) == l);
+    int j;
+    j = g.getNumVertices();
+    int start;
+    vector<string> s = g.getSongs();
+    cout << "TEST - Betweenness Centrality:" << endl << "There are " << j << " songs in the current graph. No CLI input is necessary for this. The output is all the betweenness centrality values in this graph." << endl;
+    for(int i = 0; i < g.getNumVertices(); i++)    {
+        int a = g.BetweennessCentrality(i);
+        cout << "Centrality of " << s[i] << " - " << a << "." << endl;
+    }
+    int l = g.BetweennessCentrality(j-4);
+    REQUIRE(g.BetweennessCentrality(j-4) == l);
     }
 
 
