@@ -70,15 +70,40 @@ public:
      */
     void displayMatrix();
 
-
+    /**
+     * runs a BFS search between two nodes in the graph
+     * @param start starting node
+     * @param end ending node
+     * @return length between nodes
+     */
     int bfsUnweightedPath(unsigned int start, unsigned int end);
 
+    /**
+     * runs the betweenness centrality analysis
+     * @param song node to check
+     * @return number of times the song was in a shortest path
+     */
     int BetweennessCentrality(int song);
 
+    /**
+     * finds minimum distance between two node
+     * @param distance saves into this
+     * @param Tset whether the node has been visited
+     * @return minimum distance
+     */
     int miniDist(vector<int> distance, vector<bool>Tset);
 
+    /**
+     * Dijkstra's algorithm -- prints shortest path
+     * @param src starting node
+     * @return success or not
+     */
     bool DijkstraAlgo(int src);
 
+    /**
+     * helper function for DijkstraAlgo() to print the output
+     * @param distance output to print
+     */
     void printDJK(vector<int> distance);
 
     /**
@@ -101,6 +126,15 @@ public:
 
 };
 
+/**
+ * creates a V2D from a file (in our modified format)
+ * @param filename file to read in
+ * @return the newly created V2D
+ */
 V2D file_to_V2D(const std::string &filename);
 
+/**
+ * prints a V2D
+ * @param playlist V2D to print
+ */
 void print(const V2D &playlist);

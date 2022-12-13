@@ -1,7 +1,12 @@
 # CS 225 Final Project
 
 _See `Project Proposal.md` for project proposal details._
+
 _See `Writeup.md` for post-project reflection writeup._
+
+_Click [here](https://drive.google.com/file/d/1vsuZ0zzodvpXu9hEAfivc_sRUAMWCmeo/view?usp=sharing) for the presentation video._
+
+---
 
 # C++ Instructions
 Presumes running with cmake and make installed and ready to go; then, similarly to our in-class usage:
