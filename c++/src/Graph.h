@@ -30,6 +30,7 @@ class Graph{
     public:
         Graph(const V2D & playlist);
         //~Graph();
+        int introduction();
         void addEdge(int x, int y);
         void addWeight(int x, int y, int z);
         void nodes(const V2D & playlist);

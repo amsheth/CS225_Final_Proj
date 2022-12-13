@@ -27,7 +27,6 @@ int main(int argc, char *argv[]) {
     std::cout << std::endl;
     abc.displayMatrix();
     std::cout << std::endl;
-    //abc.hasCycle();
     int x = 3;
     std::cout << "Printing The Dijkstra's for node: " << x << std::endl;
     std::cout << std::endl;
@@ -35,8 +34,6 @@ int main(int argc, char *argv[]) {
     std::cout << std::endl;
     int i = 3;
     int j = 2;
-    //int val = abc.bfsUnweightedPath(i, j);
-    //std::cout << val << " - The BFS Unweighted Path between points " <<i<<" & "<<j<< std::endl;
     vector<string> s = abc.getSongs();
     for (int i=0;i<17;i++){
         int val = abc.BetweennessCentrality(i);

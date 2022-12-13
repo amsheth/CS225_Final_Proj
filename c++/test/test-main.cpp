@@ -6,23 +6,24 @@
 #include <filesystem>
 
 
-TEST_CASE("Basic Size Checks"){
+
+    TEST_CASE("Basic Size Checks"){
     V2D playlist = file_to_V2D("../test/demofile1.txt");
     Graph g = Graph(playlist);
     REQUIRE(g.getNumVertices()==17);
     REQUIRE(g.getAdjMat().size()==17);
     REQUIRE(g.getSongs().size()==17);
-}
-TEST_CASE("Dijkstra's Algo"){
+    }
+    TEST_CASE("Dijkstra's"){
+    
     V2D playlist = file_to_V2D("../test/demofile1.txt");
     Graph g = Graph(playlist);
     g.make(playlist);
-    bool x=g.DijkstraAlgo(5);
+    bool x = g.DijkstraAlgo(5);
     REQUIRE(x==true);
-}
+    }
 
-
-TEST_CASE("BFS - returns # edges in shortest path"){
+    TEST_CASE("BFS"){
     V2D playlist = file_to_V2D("../test/demofile1.txt");
     Graph g = Graph(playlist);
     g.make(playlist);
@@ -46,13 +47,16 @@ TEST_CASE("BFS - returns # edges in shortest path"){
     REQUIRE(g.bfsUnweightedPath(i, j) == bfs);
     }
 
-TEST_CASE("Betweenness Centrality"){
+
+    TEST_CASE("Betweenness Centrality"){
+
+
     std::vector<std::vector<std::string>> playlist = file_to_V2D("../test/test-demofile-1.txt");
 
     Graph g = Graph(playlist);
     g.make(playlist);
     int l = g.BetweennessCentrality(4);
     REQUIRE(g.BetweennessCentrality(4) == l);
-
     }
+
 

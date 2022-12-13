@@ -20,6 +20,17 @@
 
 using namespace std;
 
+int Graph::introduction()   {
+    cout << "Welcome to Songweb! Songweb is a disconnected graph that has songs from Spotify as vertices and a combined genre-popularity " << endl;
+    cout << "factor as weighted edges. This data was all pulled from Spotify's API with the use of the spotipy library." << endl << endl;
+    cout << "There are 3 algorithms that can be tested here: Dijkstra's algorithm for finding shortest paths (option 1), a BFS algorithm" << endl;
+    cout << "for finding the shortest path between two nodes (option 2), and an algorithm that identifies the centrality of a given song in the" << endl;
+    cout << "graph (Betweenness Centrality, option 3). Please type in which of the algorithms you would like to test below:" << endl;
+    int ret;
+    cin >> ret;
+    return ret;
+}
+
 Graph::Graph(const V2D & playlist){     // constructor
     numVertices=playlist.size();
     numVertices=numVertices-1;
@@ -34,12 +45,6 @@ Graph::Graph(const V2D & playlist){     // constructor
     }
     nodes(playlist);
 }
-
-// void Graph::addWeight(int x, int y, int z){
-//     adjMat[x][y] = z;
-//     adjMat[y][x] = z;
-// }
-
 
 void Graph::addWeight(int x, int y,int z){
     adjMat[x][y] = z;
@@ -71,7 +76,6 @@ void Graph::displayMatrix() {
    }
 }
 V2D file_to_V2D(const std::string & filename){
-    // mp_schedules implementation is used here
     V2D xyz;    
     std::string str;
     std::string x;
@@ -103,7 +107,7 @@ void print(const V2D & playlist){
         std::cout << playlist[i][j] << ";";
         }
         std::cout<<"\n";
-        //std::cout << roster[i][roster[i].size()-1] << "}, \\" << std::endl;
+        
     }
 }
 
@@ -190,7 +194,7 @@ int Graph::BetweennessCentrality(int song)  {
             // finds the shortest path between the current node and ALL other nodes, if possible
             // if no paths are available from the input to this function, return value will be 0
             
-            int*  distance = new int[numVertices]; // compares distances
+            int* distance = new int[numVertices]; // compares distances
             bool* visited = new bool[numVertices]; // contains visited nodes
             for(int k = 0; k < numVertices; k++)
                 {
@@ -216,12 +220,11 @@ int Graph::BetweennessCentrality(int song)  {
                         }
                     }
                 }
+            
             return retval;  // betweenness centrality of the inputted vertex
         }   
 
 void Graph::make(const V2D &playlist){
-
-    // nodes(playlist);
     for (unsigned i = 0; i < songs.size(); i++){
         for(unsigned j = i; j < songs.size(); j++){
             if (songs[i]==songs[j]){
@@ -239,7 +242,6 @@ void Graph::make(const V2D &playlist){
     }   
 }
 void Graph::makeartist(const V2D &playlist){
-    // nodes(playlist);
     for (unsigned i = 0; i < songs.size(); i++){
         for(unsigned j = i; j < songs.size(); j++){
             if (i!=j){
@@ -247,8 +249,6 @@ void Graph::makeartist(const V2D &playlist){
             }
             for (unsigned k = 1; k < 1; k++){
                 for(unsigned t = 1; t < 1; t++){
-                    //std::cout<<playlist[j][t]<<';';
-                    //std::cout << playlist[i][k] + " - Second " << std::endl;
                     if (playlist[i][k] == playlist[j][t]){
                         addEdge(i,j);
                     }
@@ -302,6 +302,8 @@ bool Graph::DijkstraAlgo(int src) // adjacency matrix
     }
     printDJK(distance);
     
+    delete distance;
+    delete Tset;
     return true;
 }
 void Graph::printDJK(int* distance){
