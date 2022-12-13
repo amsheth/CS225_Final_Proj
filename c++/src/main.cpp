@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
     // handle filename argument
-    if (argc < 2) {
+    /*if (argc < 2) {
         std::cerr << "Please provide filename" << std::endl;
         return -1;
     } else if (argc > 2) {
@@ -14,9 +14,9 @@ int main(int argc, char *argv[]) {
     }
     std::cout<<filesystem::current_path()<<std::endl;
     char *filename = argv[1];
-
+    "../test/test-demofile-1.txt"
     std::cout << "Printing The Demofile:" << std::endl;
-    //Graph myGraph("rosterList.txt", "studentList.txt");
+    //Graph myGraph("rosterList.txt", "studentList.txt");*/
 
     V2D roster = file_to_V2D("../../Python/demofile1.txt");
     print(roster);
@@ -24,7 +24,6 @@ int main(int argc, char *argv[]) {
     std::cout << std::endl;
     Graph abc(roster);
     abc.make(roster);
-    abc.displayMatrix();
     std::cout << std::endl;
     abc.displayMatrix();
     std::cout << std::endl;
@@ -34,13 +33,15 @@ int main(int argc, char *argv[]) {
     std::cout << std::endl;
     abc.DijkstraAlgo(x);
     std::cout << std::endl;
-    int i = 5;
-    int j = 4;
+    int i = 3;
+    int j = 2;
     //int val = abc.bfsUnweightedPath(i, j);
     //std::cout << val << " - The BFS Unweighted Path between points " <<i<<" & "<<j<< std::endl;
-    int val = abc.BetweennessCentrality(2);
-    std::cout << val << " - Centrality of inputted song, determined by B.C. algorithm" << std::endl;
-
+    vector<string> s = abc.getSongs();
+    for (int i=0;i<17;i++){
+        int val = abc.BetweennessCentrality(i);
+        std::cout << val << " - Centrality of " << s[i] <<", determined by B.C. algorithm" << std::endl;
+    }
     return 0;
 }
 

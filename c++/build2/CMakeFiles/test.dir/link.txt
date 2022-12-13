@@ -1,0 +1,1 @@
+/usr/bin/c++  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 CMakeFiles/test.dir/test/test-main.cpp.o CMakeFiles/test.dir/src/Graph.cpp.o CMakeFiles/test.dir/src/utils.cpp.o -o test  /usr/lib/libCatch2Main.a /usr/lib/libCatch2.a 

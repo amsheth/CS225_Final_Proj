@@ -26,7 +26,6 @@ class Graph{
         vector<vector<int>> adjMat;
         vector<string> songs;
         vector<string> popularity;
-        V2D AG;
         int NO_PARENT = -1;
     public:
         Graph(const V2D & playlist);
@@ -42,8 +41,9 @@ class Graph{
         int bfsUnweightedPath(unsigned int start, unsigned int end);
         int BetweennessCentrality(int song);
         int miniDist(int dist[], bool sptSet[]);
-        void DijkstraAlgo(int src);
+        bool DijkstraAlgo(int src);
         void printSolution(int startVertex, vector<int> distances, vector<int> parents);
+        void printDJK(int* distance);
 
     int getNumVertices() const;
 

@@ -183,14 +183,7 @@ int Graph::BetweennessCentrality(int song)  {
     // high return value means many of the shortest paths between nodes cross over the inputted song.
 
 
-    for(unsigned i = 0; i < adjMat.size(); i++) {       // outer for loop, goes through every vertex
-
-            if((int)i == song)   {
-                continue;           // betweenness centrality does not factor in shortest
-                                    // paths beginning at the node of interest (in this
-                                    // implementation, the inputted song vertex is the
-                                    // node of interest) 
-            }
+    for(int i = 0; i < numVertices; i++) {       // outer for loop, goes through every vertex
 
 
             // runs an altered version of dijkstra's algorithm that includes a check for the inputted song
@@ -218,7 +211,7 @@ int Graph::BetweennessCentrality(int song)  {
                                         retval += 1;        // if song m is a part of the shortest path, and if song m is the 
                                                             // inputted song, increment the return value
                                         }
-                                    distance[k] = distance[m] + adjMat[m][k];      // updates weighted distance of the current shortest path
+                                    distance[k] = distance[m] + adjMat[m][k];      // updates distance of the current path
                             }
                         }
                     }
@@ -238,7 +231,7 @@ void Graph::make(const V2D &playlist){
                 for(unsigned t = 1; t < playlist[j].size()-1; t++){
                     if (playlist[i][k] == playlist[j][t]){
                         int w=((stoi(popularity[i])+stoi(popularity[j]))/2)+1;
-                        addWeight(i, k, w);
+                        addWeight(i, j, w);
                     }
                 }
             }
@@ -257,7 +250,7 @@ void Graph::makeartist(const V2D &playlist){
                     //std::cout<<playlist[j][t]<<';';
                     //std::cout << playlist[i][k] + " - Second " << std::endl;
                     if (playlist[i][k] == playlist[j][t]){
-                        addEdge(i,k);
+                        addEdge(i,j);
                     }
                 }
             }
@@ -281,7 +274,8 @@ int Graph::miniDist(int distance[], bool Tset[]) // finding minimum distance
     return ind;     // returns index of song with lowest distance
 }
 
-void Graph::DijkstraAlgo(int src) // adjacency matrix 
+
+bool Graph::DijkstraAlgo(int src) // adjacency matrix 
 {
     int*  distance = new int[numVertices]; // // array to calculate the minimum distance for each node
     bool *Tset = new bool[numVertices];// boolean array to mark visited and unvisited for each node
@@ -306,6 +300,11 @@ void Graph::DijkstraAlgo(int src) // adjacency matrix
                 distance[k]=distance[m]+adjMat[m][k];
         }
     }
+    printDJK(distance);
+    
+    return true;
+}
+void Graph::printDJK(int* distance){
     int width =75;
     cout<<"Vertex\t\t\t\t\t\t\t\t\tDistance from source vertex"<<endl;
     for(int k = 0; k<numVertices; k++)                      
@@ -315,6 +314,7 @@ void Graph::DijkstraAlgo(int src) // adjacency matrix
         setw(width)<<distance[k]<<endl;
     }
 }
+
 
 int Graph::getNumVertices() const {
     return numVertices;
