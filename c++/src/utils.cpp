@@ -12,8 +12,6 @@ std::string file_to_string(const std::string& filename){
     strStream << text.rdbuf();
   }
   std::string str = strStream.str();
-  std::cout<<"String: "<<std::endl;
-  std::cout <<str << std::endl;
   return str;
 }
 

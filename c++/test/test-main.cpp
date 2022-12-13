@@ -6,7 +6,7 @@
 #include <filesystem>
 
 
-
+    
     TEST_CASE("Basic Size Checks"){
     V2D playlist = file_to_V2D("../test/demofile1.txt");
     Graph g = Graph(playlist);
@@ -19,7 +19,14 @@
     V2D playlist = file_to_V2D("../test/demofile1.txt");
     Graph g = Graph(playlist);
     g.make(playlist);
-    bool x = g.DijkstraAlgo(5);
+    int index;
+    int i, j;
+    i = 0;
+    j = g.getNumVertices();
+    cout << "TEST - Dijkstra's:" << endl << "There are " << j << " songs in the current graph. Please enter a starting index from " << i << " through " << (j-1) << ": " << endl; 
+    cin >> index;
+    bool x = g.DijkstraAlgo(3);
+    cout << "Extremely large distances are for disconnected nodes. Zeroes are only for the inputted node to this algorithm." << endl;
     REQUIRE(x==true);
     }
 
@@ -29,8 +36,8 @@
     g.make(playlist);
     int i, j;
     i = 0;
-    j = g.getNumVertices()-6;
-    cout << "TEST - BFS:" << endl << "There are " << j << " songs in the current graph. Please enter a starting index and an ending index (in this exact order and one at a time) from " << i << " and " << (j-1) << ": " << endl; 
+    j = g.getNumVertices();
+    cout << "TEST - BFS:" << endl << "There are " << j << " songs in the current graph. Please enter a starting index and an ending index (in this exact order and one at a time) from " << i << " through " << (j-1) << ": " << endl; 
     cin >> i;
     cin >> j;
 

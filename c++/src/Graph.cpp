@@ -25,23 +25,20 @@ int Graph::introduction()   {
     cout << "factor as weighted edges. This data was all pulled from Spotify's API with the use of the spotipy library." << endl << endl;
     cout << "There are 3 algorithms that can be tested here: Dijkstra's algorithm for finding shortest paths (option 1), a BFS algorithm" << endl;
     cout << "for finding the shortest path between two nodes (option 2), and an algorithm that identifies the centrality of a given song in the" << endl;
-    cout << "graph (Betweenness Centrality, option 3). Please type in which of the algorithms you would like to test below:" << endl;
-    int ret;
-    cin >> ret;
-    return ret;
+    cout << "graph (Betweenness Centrality, option 3)." << endl;
+    return 1;
 }
 
 Graph::Graph(const V2D & playlist){     // constructor
     numVertices=playlist.size();
     numVertices=numVertices-1;
-    //vector<vector<int>> adjMat= new vector<vector<int>>;
+    
     adjMat.resize(numVertices);
     for (unsigned i = 0; i < playlist.size()-1; i++){
         adjMat[i].resize(numVertices);
         for (int j=0;j<numVertices;j++){
             adjMat[i][j]=0;
         }
-        //adjMat.push_back(std::vector<int>(playlist.size(), 0));
     }
     nodes(playlist);
 }
@@ -58,12 +55,9 @@ void Graph::addEdge(int x, int y){
 }
 void Graph::nodes(const V2D & playlist){
     for (int i=0;i<(int)playlist.size()-1;i++){
-        //std::cout << playlist[i][0] << std::endl;
         songs.push_back(playlist[i][0]);
         int x=playlist[i].size() -1;
         popularity.push_back(playlist[i][x]);
-        //std::cout << playlist[i][x] << std::endl;
-        //std::cout << songs[songs.size()-1] + " - TEST " << std::endl;
     }
 }
 void Graph::displayMatrix() {
@@ -102,7 +96,6 @@ V2D file_to_V2D(const std::string & filename){
 
 void print(const V2D & playlist){
     for (int i = 0; i < (int) playlist.size(); i++){
-        //std::cout << "{ ";
         for(int j = 0; j < (int) playlist[i].size()-1; j++){
         std::cout << playlist[i][j] << ";";
         }
