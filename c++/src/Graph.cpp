@@ -194,8 +194,8 @@ int Graph::BetweennessCentrality(int song)  {
             // finds the shortest path between the current node and ALL other nodes, if possible
             // if no paths are available from the input to this function, return value will be 0
             
-            int* distance = new int[numVertices]; // compares distances
-            bool* visited = new bool[numVertices]; // contains visited nodes
+            vector<int> distance (numVertices); // compares distances
+            vector<bool> visited (numVertices); // contains visited nodes
             for(int k = 0; k < numVertices; k++)
                 {
                     distance[k] = INT_MAX;
@@ -241,25 +241,10 @@ void Graph::make(const V2D &playlist){
         }
     }   
 }
-void Graph::makeartist(const V2D &playlist){
-    for (unsigned i = 0; i < songs.size(); i++){
-        for(unsigned j = i; j < songs.size(); j++){
-            if (i!=j){
-                continue;
-            }
-            for (unsigned k = 1; k < 1; k++){
-                for(unsigned t = 1; t < 1; t++){
-                    if (playlist[i][k] == playlist[j][t]){
-                        addEdge(i,j);
-                    }
-                }
-            }
-        }
-    }   
-}
 
 
-int Graph::miniDist(int distance[], bool Tset[]) // finding minimum distance
+
+int Graph::miniDist(vector<int> distance,vector<bool>Tset) // finding minimum distance
 {
     int minimum=INT_MAX,ind;
               
@@ -277,8 +262,8 @@ int Graph::miniDist(int distance[], bool Tset[]) // finding minimum distance
 
 bool Graph::DijkstraAlgo(int src) // adjacency matrix 
 {
-    int*  distance = new int[numVertices]; // // array to calculate the minimum distance for each node
-    bool *Tset = new bool[numVertices];// boolean array to mark visited and unvisited for each node
+    vector<int> distance (numVertices); // // array to calculate the minimum distance for each node
+    vector<bool>Tset (numVertices);// boolean array to mark visited and unvisited for each node
     
      
     for(int k = 0; k<numVertices; k++)
@@ -301,12 +286,9 @@ bool Graph::DijkstraAlgo(int src) // adjacency matrix
         }
     }
     printDJK(distance);
-    
-    delete distance;
-    delete Tset;
     return true;
 }
-void Graph::printDJK(int* distance){
+void Graph::printDJK(vector<int> distance){
     int width =75;
     cout<<"Vertex\t\t\t\t\t\t\t\t\tDistance from source vertex"<<endl;
     for(int k = 0; k<numVertices; k++)                      

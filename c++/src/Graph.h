@@ -35,16 +35,13 @@ class Graph{
         void addWeight(int x, int y, int z);
         void nodes(const V2D & playlist);
         void make(const V2D & playlist);
-        void makeartist(const V2D & playlist);
-        int edgeWeightAlgo(const V2D &playlist, int input1, int input2);
         void displayMatrix();
-        bool hasCycle();
         int bfsUnweightedPath(unsigned int start, unsigned int end);
         int BetweennessCentrality(int song);
-        int miniDist(int dist[], bool sptSet[]);
+        int miniDist(vector<int> distance, vector<bool>Tset);
         bool DijkstraAlgo(int src);
         void printSolution(int startVertex, vector<int> distances, vector<int> parents);
-        void printDJK(int* distance);
+        void printDJK(vector<int> distance);
 
     int getNumVertices() const;
 
