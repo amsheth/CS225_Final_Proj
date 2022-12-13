@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
     char *filename = argv[1];
 
     V2D roster = file_to_V2D(filename);
+    std::cout << "Playlist:" << std::endl;
     print(roster);
     std::cout << "Printing The Adjacency Matrix:" << std::endl;
     std::cout << std::endl;
