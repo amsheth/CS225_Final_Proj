@@ -1,4 +1,0 @@
-/workspaces/CS225/final-proj/c++/build2/CMakeFiles/main.dir
-/workspaces/CS225/final-proj/c++/build2/CMakeFiles/test.dir
-/workspaces/CS225/final-proj/c++/build2/CMakeFiles/edit_cache.dir
-/workspaces/CS225/final-proj/c++/build2/CMakeFiles/rebuild_cache.dir
