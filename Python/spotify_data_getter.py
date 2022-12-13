@@ -8,9 +8,6 @@ os.environ['SPOTIPY_REDIRECT_URI'] = 'http://localhost:8888/callback'
 from spotipy.oauth2 import SpotifyClientCredentials
 
 
-# update output filename here
-filename = r"demofile2.txt"
-
 def genre(x, sp):
     r = []
     results = sp.artist(x)
@@ -19,7 +16,7 @@ def genre(x, sp):
     return r
 
 
-def get_playlist_tracks(sp, playlist_id):
+def get_playlist_tracks(sp, playlist_id, filename):
     f = open(filename, "w")
     # Ref - https://stackoverflow.com/questions/39086287/spotipy-how-to-read-more-than-100-tracks-from-a-playlist?noredirect=1&lq=1
     results = sp.playlist_tracks(playlist_id)
@@ -49,15 +46,8 @@ def get_playlist_tracks(sp, playlist_id):
     print(f.read())
 
 
-# open and read the file after the appending:
-
-spotify = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
-<<<<<<< HEAD
-#spotify:playlist:37i9dQZEVXbMDoHDwVN2tF
-get_playlist_tracks(spotify, '5QZ75WasgTm3nsxC0EdFyl')  
-    
-    
-=======
-# spotify:playlist:37i9dQZEVXbMDoHDwVN2tF
-get_playlist_tracks(spotify, '5QZ75WasgTm3nsxC0EdFyl')
->>>>>>> 8d745acfdd6b5510e2c15258b99280a02a772202
+def run(filename, playlist_id):
+    # open and read the file after the appending:
+    spotify = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
+    # spotify:playlist:37i9dQZEVXbMDoHDwVN2tF
+    get_playlist_tracks(spotify, playlist_id, filename)
